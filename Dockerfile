@@ -10,7 +10,7 @@ WORKDIR /serge
 RUN npm install --location=global npm yarn
 RUN yarn install
 RUN yarn build
-#COPY scripts/load_db.sh /serge/load_db.sh
-#COPY scripts/dump_db.sh /serge/dump_db.sh
+COPY scripts/load_db.sh /serge/load_db.sh
+COPY scripts/dump_db.sh /serge/dump_db.sh
 COPY scripts/start_serge.sh /serge/start_serge.sh
 CMD bash start_serge.sh

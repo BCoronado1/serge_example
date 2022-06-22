@@ -283,3 +283,5 @@ error_log
 
 *.bak
 *.backup
+
+db/*
