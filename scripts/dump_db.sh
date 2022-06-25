@@ -1,8 +1,12 @@
 #!/bin/bash
-# Script to periodically dump the SERGE databases to file
+# Script to periodically dump the Serge database to file
 while :
 do
     sleep 60 # Do this once every minute, overwriting the previous database information
     echo "Dumping database..."
-    cp -vf /serge/packages/server/db/* /db/ # copy all database files to shared volume
+    echo "--------------------"
+    echo "Deleting stale database backup..."
+    find /db/ -type f ! -name '.gitkeep' -delete -print
+    echo "Transferring latest database files..."
+    cp -rv /serge/packages/server/db/* /db/
 done
